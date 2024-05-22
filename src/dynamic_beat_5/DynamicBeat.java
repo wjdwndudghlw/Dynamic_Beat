@@ -183,21 +183,35 @@ public class DynamicBeat extends JFrame {
     private Image screenImage;
     private Graphics screenGraphic;
 
-    private final ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));
+    private final ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));  
     private final ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/exitButtonBasic.png"));
     private final ImageIcon startButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/startButtonEntered.png"));
     private final ImageIcon startButtonBasicImage = new ImageIcon(Main.class.getResource("../images/startButtonBasic.png"));
-    private final ImageIcon quitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/quitButtonEntered.png"));
+    private final ImageIcon quitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/quitButtonEntered.png")); 
     private final ImageIcon quitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/quitButtonBasic.png"));
+    // 메인화면 버튼
+	private final ImageIcon leftButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/leftButtonEntered.png")); 
+	private final ImageIcon leftButtonBasicImage = new ImageIcon(Main.class.getResource("../images/leftButtonBasic.png"));
+	private final ImageIcon rightButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/rightButtonEntered.png"));
+	private final ImageIcon rightButtonBasicImage = new ImageIcon(Main.class.getResource("../images/rightButtonBasic.png"));
+    // 메인화면 화면
+    private Image titleImage = new ImageIcon(Main.class.getResource("../images/Mighty Love Title Image.png")).getImage();
+    private Image selectedImage = new ImageIcon(Main.class.getResource("../images/Mighty Love Start Image.png")).getImage();
 
+    // 인트로
     private Image background = new ImageIcon(Main.class.getResource("../images/introBackgroundTitle.jpg")).getImage();
     private final JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
 
     private final JButton exitButton = new JButton(exitButtonBasicImage);
     private final JButton startButton = new JButton(startButtonBasicImage);
     private final JButton quitButton = new JButton(quitButtonBasicImage);
-
+    private final JButton leftButton = new JButton(leftButtonEnteredImage);
+    private final JButton rightButton = new JButton(rightButtonBasicImage);
+    
     private int mouseX, mouseY;
+
+    // 시작버튼 시 메인화면 활성화
+    private boolean isMainScreen = false;
 
     public DynamicBeat() {
         initUI();
@@ -219,20 +233,31 @@ public class DynamicBeat extends JFrame {
     }
 
     private void addButtons() {
-        setupButton(exitButton, 1245, 0, 30, 30, exitButtonBasicImage, exitButtonEnteredImage, () -> System.exit(0));
-        setupButton(startButton, 40, 200, 400, 100, startButtonBasicImage, startButtonEnteredImage, () -> {
+        setupButton(exitButton, true, 1245, 0, 30, 30, exitButtonBasicImage, exitButtonEnteredImage, () -> System.exit(0));
+        setupButton(startButton, true, 40, 200, 400, 100, startButtonBasicImage, startButtonEnteredImage, () -> {
             startButton.setVisible(false);
             quitButton.setVisible(false);
             background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
+
+            // 메인화면 설정
+            isMainScreen =true;
+            // 메인화면 버튼
+            setupButton(leftButton, true, 140, 310, 60, 60, leftButtonBasicImage, leftButtonEnteredImage,  ()-> {} );
+            setupButton(rightButton, true, 1080, 310, 60, 60, rightButtonBasicImage, rightButtonEnteredImage, ()-> {});
         });
-        setupButton(quitButton, 40, 330, 400, 100, quitButtonBasicImage, quitButtonEnteredImage, () -> System.exit(0));
+        setupButton(quitButton, true, 40, 330, 400, 100, quitButtonBasicImage, quitButtonEnteredImage, () -> System.exit(0));
+        
+
+        
+
     }
 
-    private void setupButton(JButton button, int x, int y, int width, int height, ImageIcon basicImage, ImageIcon enteredImage, Runnable action) {
+    private void setupButton(JButton button, boolean visible, int x, int y, int width, int height, ImageIcon basicImage, ImageIcon enteredImage, Runnable action) {
         button.setBounds(x, y, width, height);
         button.setBorderPainted(false);
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
+        button.setVisible(visible);
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -301,6 +326,13 @@ public class DynamicBeat extends JFrame {
 
     private void screenDraw(Graphics g) {
         g.drawImage(background, 0, 0, null);
+
+		if(isMainScreen)
+		{
+			g.drawImage(selectedImage, 340, 100, null);
+			g.drawImage(titleImage, 340, 70, null);
+		}
+
         paintComponents(g);
         this.repaint();
     }
