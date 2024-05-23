@@ -3,6 +3,7 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "C:\\Users\\wjdwn\\Downloads\\jlayer1.0.1\\jl1.0.1.jar"
-    ]
+        "D:/003_다운받은파일들/JLayer1.0.1/jl1.0.1.jar"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
