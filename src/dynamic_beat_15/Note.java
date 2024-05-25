@@ -1,4 +1,4 @@
-package dynamic_beat_14;
+package dynamic_beat_15;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -57,6 +57,7 @@ public class Note extends Thread {
         // System.out.println(y);
         y += Main.NOTE_SPEED;
         if (y > 620) {
+            System.out.println("close");
             close();
         }
     }
@@ -99,7 +100,7 @@ public class Note extends Thread {
                 drop();
                 if (proceeded) {
                     Thread.sleep(Main.SLEEP_SPEED);
-                } else {
+                } else {                                                                                         
                     interrupt();
                     break;
                 }

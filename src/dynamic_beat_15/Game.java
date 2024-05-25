@@ -1,4 +1,4 @@
-package dynamic_beat_14;
+package dynamic_beat_15;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -369,8 +369,8 @@ public class Game extends Thread { // 스레드란 하나의 프로세스 내에
                 while (i < beats.length && !interrupted()) {
                         boolean dropped = false;
                         if (beats[i].getTime() <= gameMusic.getTime()) { // 내려오는 비트가 현재 실행되는 음악과 맞춰서 내려오기 위해
-                                System.out.println("Game 클래스 내 211번줄 beats[i].getTime():" + beats[i].getTime());
-                                System.out.println("Game 클래스 내 211번줄 gameMusic.getTime():" + gameMusic.getTime());
+                                // System.out.println("Game 클래스 내 211번줄 beats[i].getTime():" + beats[i].getTime());
+                                // System.out.println("Game 클래스 내 211번줄 gameMusic.getTime():" + gameMusic.getTime());
                                 Note note = new Note(beats[i].getNoteName());
                                 note.start();
                                 noteList.add(note);
