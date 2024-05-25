@@ -1,12 +1,13 @@
-package dynamic_beat_11;
+package dynamic_beat_12;
 
 public class Track {
 
-	private String titleImage; 
-	private String startImage;
-	private String gameImage; 
-	private String startMusic; 
-	private String gameMusic; 
+	private String titleImage; // 제목 부분 이미지
+	private String startImage; // 게임 선택 창 이미지
+	private String gameImage;  // 게임 시작 시 이미지
+	private String startMusic; // 게임 선택 창 음악
+	private String gameMusic;  // 게임 시작 시 음악
+	private String titleName;  // 곡 제목
 	
 
 	public String getTitleImage() {
@@ -49,13 +50,22 @@ public class Track {
 		this.gameMusic = gameMusic;
 	}
 
-	public Track(String titleImage, String startImage, String gameImage, String startMusic, String gameMusic) {
+	public String getTitleName() {
+		return this.titleName;
+	}
+
+	public void setTitleName(String titleName) {
+		this.titleName = titleName;
+	}
+
+	public Track(String titleImage, String startImage, String gameImage, String startMusic, String gameMusic, String titleName) {
 		super();
 		this.titleImage = titleImage;
 		this.startImage = startImage;
 		this.gameImage = gameImage;
 		this.startMusic = startMusic;
 		this.gameMusic = gameMusic;
+		this.titleName = titleName;
 	}
 
 

@@ -1,4 +1,6 @@
-package dynamic_beat_6;
+package dynamic_beat_12;
+
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +16,6 @@ public class Music extends Thread {
     public Music(String Name, boolean isLoop) {
         try {
             this.isLoop = isLoop;
-
             file = new File(Main.class.getClassLoader().getResource("music/" + Name).toURI()); // getClassLoader: Main 클래스의 루트 디렉토리 즉 dynamic_beat3 에서 찾으며 상대경로 지원 X
             //file = new File(Main.class.getResource("music/" + Name).toURI()); // Main 클래스의 위치에서 찾는다
 
